@@ -5,3 +5,4 @@ __pychche__
 .idea
 *.log
 .venv
+venv
