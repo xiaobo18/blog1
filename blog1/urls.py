@@ -15,14 +15,36 @@ Including another URLconf
 """
 # from django.contrib import admin
 from django.urls import path
-from post import views
+from post import views as post_views
+from user import views as user_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
-    path('post/home/',views.home),
-	path('post/article/',views.article),
-	path('post/editor/',views.editor),
-    path('post/create/', views.create),
-	path('post/search/',views.search),
-	path('post/comment/',views.comment),
+    # path
+
+    path('post/home/',post_views.home),
+	path('post/article/',post_views.article),
+	path('post/editor/',post_views.editor),
+    path('post/create/', post_views.create),
+	path('post/search/',post_views.search),
+	path('post/comment/',post_views.comment),
+    path('post/delete/',post_views.delete),
+    path('post/tag/',post_views.tag),
+    # user
+    path('user/login/',user_views.login),
+    path('user/logout/',user_views.logout),
+    path('user/register/',user_views.register),
+    path('user/info/',user_views.info),
+
+    # path('post/loghandler/',views.loginhandler),
+    # path('post/logout/',views.logout),
+
+    path('post/upfile/',post_views.upfile),
+    path('post/savefile/',post_views.savefile),
+
+
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

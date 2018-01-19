@@ -1,15 +1,38 @@
 {% extends "base.html" %}
 
+{% block header1 %}
+    <div style="float: right;">
+            {% if request.user %}
+            <a href="/user/info">个人资料</a>
+            <a href="/user/logout">退出</a>
+            {% else %}
+            <a href="/user/login">登录</a>
+            {% endif %}
+
+        </div>
+        {% endblock %}
+
 {%block content %}
     <div class="container">
         <form method="POST" action="/post/editor/">
             {% csrf_token %}
             <div>
-                <input type="text" name="title" value="{{article.title}}">
+                题目：<input type="text" name="title" value="{{article.title}}">
             </div>
+            <div>目前标签：
+            {% for tag in tags %}
+
+                <span><a href="/post/tag/?tid={{tag.id}}">{{tag.name}}</a></span>
+                <!-- {{tag.name}} -->
+
+            {% endfor %}
+
+        </div>
+            <div>标签：<input type="text" name="tags" value="{{tags}}"></div>
             <div>
-                <textarea name="content" rows="20" cols="100">{{article.content}}</textarea>
+                正文：<textarea name="content" rows="20" cols="100">{{article.content}}</textarea>
             </div>
+
             <input type="hidden" name="aid" value="{{article.id}}">
             <input type="submit" name="提交">
         </form>

@@ -1,0 +1,44 @@
+
+{% extends 'base.html' %}
+
+{% block header1 %}
+	<div style="float: right;">
+			{% if request.user %}
+			<a href="/user/info">个人资料</a>
+			<a href="/user/logout">退出</a>
+			{% else %}
+			<a href="/user/login">登录</a>
+			{% endif %}
+
+		</div>
+		{% endblock %}
+
+
+
+{% block content %}
+<h2>题目列表：</h2>
+{% for article in articles %}
+<div>
+	
+	<hr>
+	<h3 style="text-align: left;">
+		<a href="/post/article/?aid={{article.id}}">{{article.title}}</a>
+	</h3>
+<hr>
+
+		<!-- 正文 -->
+		<!-- <div>{{article.content | linebreaks}}</div>
+		<hr> -->
+
+<div>
+
+
+
+{% endfor %}
+
+{% endblock %}
+
+
+
+
+

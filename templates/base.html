@@ -9,13 +9,18 @@
 </head>
 
 <body>
+{% block header1 %}
+		{% endblock %}
+
 	<div class="container">
 		<h1><a href="/post/home/">MyBlog</a></h1>
+
+		
 
 		<form method="POST" action="/post/search/" style="text-align: right;">
 			{% csrf_token %}
 			<input type="text" name="keyword">
-			<input type="submit" name="搜索">
+			<input type="submit" name="搜索" value="搜索">
 			<a href="/post/create/">新建文章</a>
 		</form>
 
@@ -23,7 +28,7 @@
 
 		<div class="content">{%block content %}{%endblock%}</div>
 	</div>
-	<div class="footer">当前访问人数：1</div>
+	<!-- <div class="footer">当前访问人数：{{post_views}}</div> -->
 </body>
 
 </html>

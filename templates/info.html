@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+<!-- {% load staticfiles %} -->
+
+{% block content %}
+
+<div>nickname: {{user.nickname}}</div>
+<div><a href="/post/upfile/">avarta: </a><img src="{{MEDIA_URL}}{{ user.avarta }}" width="100px", height="100px"></div>
+<div>age: {{user.age}}</div>
+<div>sex: {{user.sex}}</div>
+
+{% endblock %}

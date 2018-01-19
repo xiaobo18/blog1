@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if errors %}
+{{ errors|safe }}
+{% endif %}
+
+<form action="/user/login/" method="POST">
+    {% csrf_token %}
+    nickname: <input type="text" name="nickname"><br>
+    password: <input type="password" name="password"><br>
+    <input type="submit" name="登录" value="登录"><br>
+    <hr>
+    <a href="/user/register">没有账号，请先注册</a>
+</form>
+{% endblock %}
+
+
+
+
+
+
+
+
